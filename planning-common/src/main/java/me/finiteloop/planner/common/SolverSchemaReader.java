@@ -3,7 +3,6 @@
  */
 package me.finiteloop.planner.common;
 
-import java.io.Writer;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -12,11 +11,6 @@ import org.optaplanner.core.config.solver.SolverConfig;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
-import com.thoughtworks.xstream.io.json.JsonWriter;
-import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 /**
  * @author kunal@finiteloop.me
@@ -24,8 +18,6 @@ import com.thoughtworks.xstream.io.xml.StaxDriver;
  */
 public class SolverSchemaReader {
 
-	private XStream xstream = null;
-	private SolverConfig solverConfig = null;
 	private static final String packageName = SolverConfig.class.getPackage()
 			.getName();
 
@@ -72,9 +64,6 @@ public class SolverSchemaReader {
 	public String toXML() {
 		StringBuffer strBuffer = new StringBuffer();
 
-		xstream = new XStream(new StaxDriver());
-		xstream.autodetectAnnotations(true);
-		// xstream.setMode(XStream.ID_REFERENCES);
 		return strBuffer.toString();
 	}
 
